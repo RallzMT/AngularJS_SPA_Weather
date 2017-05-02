@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<title>Weather App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Domine" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster|Raleway:400,500" rel="stylesheet">
+<link rel="stylesheet" href="../app.css">
+
+<body>
+<div class="container-fluid">
+  <div class="logo">
+    <h1 class="myWeather"> My Weather</h1>
+    <img src="../cloud.png" alt="sun" class="cloud">
+
+  </div>
+  <div class="container" ng-app="weatherApp" ng-controller="getForecastController">
+    <!--<form class="search" name="searchForm">-->
+    <div class="form-group">
+      <label for="search">Enter city name:</label>
+      <input type="text" class="form-control" id="search" ng-model="city" placeholder="City: e.g. Sofia" required>
+      <br>
+      <button class="btn" ng-click="submit()" ng-disabled="searchForm.$invalid">Search</button>
+    </div>
+    <div class="header">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="cityName">{{cityName}}</div>
+        </div>
+        <div class="col-md-3">
+          <img class="iconDay" src="" alt="Icon">
+        </div>
+        <div class="col-md-3">
+          <div class="temp">{{tempDay}} &#778;</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="time">{{today | date : "HH:MM, dd MMMM, yyyy"}}</div>
+        </div>
+        <div class="col-md-4">
+          <div class="cond">{{conditionDay}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-group-wrap">
+      <div class="btn-group">
+        <button type="button" class="btnToday" ng-click="btnToday()">Today</button>
+        <button type="button" class="btnForecast" ng-click="btnForecast()">48 Hours Forecast</button>
+      </div>
+    </div>
+    <div class="weatherNow">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="feel">Feels Like: {{feels}}</div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="wind">Wind: {{wind}} km/h</div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="humid">Humidity: {{humidity}}%</div>
+        </div>
+      </div>
+    </div>
+    <div class="forecast">
+      <div class="hourly"></div>
+    </div>
+
+
+    <div class="forecast">
+      <div class="cName">{{cityName}}</div>
+      <div class="hourly"></div>
+    </div>
+  </div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="../app.js"></script>
+  <script src="../phoneView/phoneView.js"></script>
+  <script src="tabletView.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</div>
+</body>
+</html>
